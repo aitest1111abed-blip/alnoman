@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Award, Users, BookOpen, Target } from "lucide-react";
+import { Award, Users, BookOpen, Target, ClipboardCheck } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 const features = [
@@ -22,6 +22,11 @@ const features = [
     icon: Target,
     title: "نتائج مضمونة",
     description: "سجل حافل بالنجاحات والتفوق الأكاديمي",
+  },
+  {
+    icon: ClipboardCheck,
+    title: "متابعة شهرية كاملة",
+    description: "نقدّم متابعة شهرية كاملة لكل طالب، تتضمن تقريرًا تفصيليًا لولي الأمر حول مستوى الطالب، تقدّم دراسته، التزامه بالحصص، وملاحظات المدرسين، لضمان أعلى جودة تعليمية",
   },
 ];
 

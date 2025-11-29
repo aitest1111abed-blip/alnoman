@@ -65,9 +65,25 @@ const CoursesSection = () => {
         transition={{ duration: 0.6 }}
         className="container mx-auto"
       >
-        <h2 className="text-5xl font-black text-center mb-16 text-foreground">
+        <h2 className="text-5xl font-black text-center mb-8 text-foreground">
           الدورات المتاحة
         </h2>
+
+        {/* Notice for Martyrs' Families */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+          className="max-w-4xl mx-auto mb-12"
+        >
+          <Card className="bg-accent/10 border-2 border-accent">
+            <CardContent className="p-6 text-center">
+              <p className="text-lg font-bold text-accent leading-relaxed">
+                تنويه: أبناء وذوي شهداء الثورة السورية المباركة — جميع الدورات مجانية بالكامل على حساب معهد النعمان التعليمي والكادر الإداري.
+              </p>
+            </CardContent>
+          </Card>
+        </motion.div>
 
         {!selectedCategory ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
