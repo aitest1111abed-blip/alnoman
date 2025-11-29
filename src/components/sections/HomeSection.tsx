@@ -1,13 +1,16 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import coverImage from "@/assets/cover.jpg";
 
 const HomeSection = () => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background">
       {/* Background Image */}
       <motion.div
         initial={{ scale: 1.1, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
+        animate={{ scale: imageLoaded ? 1 : 1.1, opacity: imageLoaded ? 1 : 0 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
         className="absolute inset-0"
       >
@@ -15,6 +18,8 @@ const HomeSection = () => {
           src={coverImage}
           alt="معهد النعمان التعليمي"
           className="w-full h-full object-cover"
+          onLoad={() => setImageLoaded(true)}
+          loading="eager"
         />
         {/* Dark overlay for better text visibility */}
         <div className="absolute inset-0 bg-black/50" />
