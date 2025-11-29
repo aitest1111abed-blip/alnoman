@@ -40,8 +40,8 @@ const HomeSection = () => {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.1, duration: 0.8 }}
-          className="text-2xl md:text-3xl lg:text-4xl font-semibold text-accent"
-          style={{ textShadow: "0 0 30px hsl(142 76% 36% / 0.8), 0 2px 15px rgba(0,0,0,0.8)" }}
+          className="text-2xl md:text-3xl lg:text-4xl font-semibold text-black"
+          style={{ textShadow: "0 2px 8px rgba(0,0,0,0.3)" }}
         >
           Al-No'man Educational Institute
         </motion.p>
@@ -50,8 +50,8 @@ const HomeSection = () => {
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ delay: 1.4, duration: 0.6 }}
-          className="mt-12 w-32 h-1 bg-accent mx-auto"
-          style={{ boxShadow: "0 0 30px hsl(142 76% 36% / 0.8)" }}
+          className="mt-12 w-32 h-1 bg-black mx-auto"
+          style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.4)" }}
         />
       </motion.div>
       
