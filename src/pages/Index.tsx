@@ -4,8 +4,6 @@ import Header from "@/components/Header";
 import HomeSection from "@/components/sections/HomeSection";
 import CoursesSection from "@/components/sections/CoursesSection";
 import RegistrationSection from "@/components/sections/RegistrationSection";
-import WhyUsSection from "@/components/sections/WhyUsSection";
-import AboutSection from "@/components/sections/AboutSection";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -18,10 +16,6 @@ const Index = () => {
         return <CoursesSection key="courses" />;
       case "registration":
         return <RegistrationSection key="registration" />;
-      case "why-us":
-        return <WhyUsSection key="why-us" />;
-      case "about":
-        return <AboutSection key="about" />;
       default:
         return <HomeSection key="home" />;
     }

@@ -11,8 +11,6 @@ const Header = ({ activeSection, onNavigate }: HeaderProps) => {
     { id: "home", label: "الصفحة الرئيسية" },
     { id: "courses", label: "الدورات المتاحة" },
     { id: "registration", label: "التسجيل" },
-    { id: "why-us", label: "لماذا نحن" },
-    { id: "about", label: "نبذة تعريفية" },
   ];
 
   return (
