@@ -1,97 +1,105 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { useState } from "react";
 
-const RegistrationSection = () => {
-  const { toast } = useToast();
+interface RegistrationSectionProps {
+  courseName?: string;
+}
+
+const RegistrationSection = ({ courseName = "" }: RegistrationSectionProps) => {
   const [formData, setFormData] = useState({
     fullName: "",
     phoneNumber: "",
-    courseId: "",
+    courseId: courseName,
   });
+  const { toast } = useToast();
+
+  useEffect(() => {
+    setFormData((prev) => ({ ...prev, courseId: courseName }));
+  }, [courseName]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
       title: "تم إرسال طلب التسجيل بنجاح",
-      description: "سيتم التواصل معك قريباً",
+      description: `شكراً ${formData.fullName}! سنتواصل معك على الرقم ${formData.phoneNumber} قريباً.`,
     });
     setFormData({ fullName: "", phoneNumber: "", courseId: "" });
   };
 
   return (
-    <section className="min-h-screen py-24 px-6 flex items-center justify-center">
+    <section className="min-h-screen bg-background py-24 px-6 flex items-center justify-center">
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         className="w-full max-w-2xl"
       >
-        <div className="bg-card border border-border rounded-2xl p-12 shadow-[0_0_50px_rgba(34,197,94,0.15)]">
-          <h2 className="text-5xl font-black text-center mb-12 text-foreground">
-            التسجيل
+        <div className="bg-card border border-border rounded-2xl p-12 shadow-lg shadow-primary/5">
+          <h2 className="text-5xl font-black text-center mb-8 text-foreground">
+            تسجيل الدورة
           </h2>
 
-          <form onSubmit={handleSubmit} className="space-y-8">
-            <div className="space-y-3">
+          <div className="bg-primary/10 border border-primary rounded-xl p-6 mb-8 text-center">
+            <h3 className="text-xl font-bold text-primary mb-2">تنويه هام</h3>
+            <p className="text-foreground leading-relaxed">
+              أبناء وذوي شهداء الثورة السورية المباركة — جميع الدورات مجانية بالكامل على حساب معهد النعمان التعليمي والكادر الإداري
+            </p>
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="space-y-2">
               <Label htmlFor="fullName" className="text-lg font-semibold">
-                الاسم الكامل
+                الاسم الثلاثي للطالب
               </Label>
               <Input
                 id="fullName"
-                type="text"
-                placeholder="أدخل اسمك الكامل"
+                placeholder="أدخل الاسم الكامل"
                 value={formData.fullName}
-                onChange={(e) =>
-                  setFormData({ ...formData, fullName: e.target.value })
-                }
+                onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                 required
-                className="h-14 text-lg bg-background border-border focus:border-accent"
+                className="h-12 bg-background border-border text-foreground"
               />
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-2">
               <Label htmlFor="phoneNumber" className="text-lg font-semibold">
                 رقم الهاتف للتواصل
               </Label>
               <Input
                 id="phoneNumber"
                 type="tel"
-                placeholder="أدخل رقم هاتفك"
+                placeholder="أدخل رقم الهاتف"
                 value={formData.phoneNumber}
-                onChange={(e) =>
-                  setFormData({ ...formData, phoneNumber: e.target.value })
-                }
+                onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
                 required
-                className="h-14 text-lg bg-background border-border focus:border-accent"
+                className="h-12 bg-background border-border text-foreground"
               />
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-2">
               <Label htmlFor="courseId" className="text-lg font-semibold">
-                ID الدورة المراد التسجيل بها
+                الدورة المختارة
               </Label>
               <Input
                 id="courseId"
-                type="text"
-                placeholder="مثال: P001, M002, L003"
+                placeholder="الدورة المختارة"
                 value={formData.courseId}
-                onChange={(e) =>
-                  setFormData({ ...formData, courseId: e.target.value })
-                }
+                onChange={(e) => setFormData({ ...formData, courseId: e.target.value })}
                 required
-                className="h-14 text-lg bg-background border-border focus:border-accent font-mono"
+                readOnly
+                className="h-12 bg-background border-border text-foreground"
               />
             </div>
 
             <Button
               type="submit"
-              className="w-full h-16 text-xl font-bold bg-accent hover:bg-accent/90 text-accent-foreground shadow-[0_0_30px_rgba(34,197,94,0.3)] hover:shadow-[0_0_40px_rgba(34,197,94,0.5)] transition-all duration-300"
+              className="w-full h-14 text-xl font-bold"
             >
-              إرسال طلب التسجيل
+              إرسال الطلب
             </Button>
           </form>
         </div>
